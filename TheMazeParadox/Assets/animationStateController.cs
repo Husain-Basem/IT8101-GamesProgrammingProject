@@ -7,19 +7,47 @@ public class animationStateController : MonoBehaviour
     // variables
     Animator animator;
     int isRunningHash;
+    int isJumpingHash;
+    int isFallingHash;
+    int isGroundedHash;
+
     string[] keys = new string[] { "a", "w", "s", "d" };
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         isRunningHash = Animator.StringToHash("isRunning");
+        isJumpingHash = Animator.StringToHash("isJumping");
+        isFallingHash = Animator.StringToHash("isFalling");
+        isGroundedHash = Animator.StringToHash("isGrounded");
     }
 
     // Update is called once per frame
     void Update()
     {
+        bool isGrounded = ThirdPersonMovement.instance.isGrounded;
+        bool isJumping = ThirdPersonMovement.instance.isJumping;
         bool isRunning = animator.GetBool(isRunningHash);
         bool keyPressed = AnyKeyDown(keys);
+        
+        animator.SetBool(isGroundedHash, isGrounded);
+        animator.SetBool(isJumpingHash, isJumping);
+
+        if (!isGrounded && !isJumping)
+        {
+            animator.SetBool(isFallingHash, true);
+        }
+
+        if (!isJumping)
+        {
+            animator.SetBool(isFallingHash, true);
+        }
+
+        if (isGrounded)
+        {   
+            animator.SetBool(isFallingHash, false);
+        }
+
         if (!isRunning && keyPressed)
         {
             animator.SetBool(isRunningHash, true);
