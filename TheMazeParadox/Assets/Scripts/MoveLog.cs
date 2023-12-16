@@ -10,6 +10,8 @@ public class MoveLog : MonoBehaviour
     public GameObject LogDestination;
     public float speed; // set speed of moving log
     [SerializeField]
+    GameObject keyItem;
+    [SerializeField]
     float rotateSpeed; // used to set the rotation speed of the log
     [SerializeField]
     Vector3 rotationDirection = new Vector3();
@@ -33,6 +35,10 @@ public class MoveLog : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        moveLog = true;
+        if (keyItem.activeSelf == false)
+        {
+            moveLog = true;
+        }
+        
     }
 }
