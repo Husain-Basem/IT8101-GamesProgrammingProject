@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - KeyWall
   layers:
   - Default
   - TransparentFX
@@ -15,6 +17,10 @@ TagManager:
   - 
   - 
   - Obstacle
+  - Ground
+  - Ignore Light
+  - Post Process
+  - 
   - 
   - 
   - 
