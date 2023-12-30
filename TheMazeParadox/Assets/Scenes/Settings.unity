@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818880f6b288c5a45899e4a1eb92663c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Maze 2.0
+  sceneName: level-4
 --- !u!4 &576701951
 Transform:
   m_ObjectHideFlags: 0
