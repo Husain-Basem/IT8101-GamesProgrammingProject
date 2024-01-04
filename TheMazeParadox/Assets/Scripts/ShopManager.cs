@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    public UnityEvent<PlayerInventory> OnDiamondCollected;
     public int coins;
     public TMP_Text coinUI;
     public ShopItemSO[] shopItemsSO;
@@ -19,7 +21,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             shopItemsGO[i].SetActive(true);
         }
-       coinUI.text = "Coins: " + coins.ToString();
+       coinUI.text = "Diamonds: " + OnDiamondCollected.ToString();
        LoadPanels();
        CheckPurchaseable();
     }
