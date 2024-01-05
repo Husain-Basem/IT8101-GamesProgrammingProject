@@ -6,43 +6,58 @@ using UnityEngine.AI;
 public class NPCFollow : MonoBehaviour
 {
     public Transform target; // Assign your main character's transform here
-    public float stoppingDistance = 2f; // The distance at which the NPC will stop following
+    public float stoppingDistance; // The distance at which the NPC will stop following
+    public Animator animator; // Assign your Animator component here
 
     private NavMeshAgent agent;
+    private bool isFollowing = false; // Add a flag to control the following behavior
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stoppingDistance;
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+
+        this.enabled = false; // Now the script starts with following disabled
     }
 
     void Update()
     {
-        // Check the distance to the target
-        float distanceToTarget = Vector3.Distance(target.position, transform.position);
+        if (isFollowing)
+        {
+            float distanceToTarget = Vector3.Distance(target.position, transform.position);
 
-        // If the target is farther away than the stopping distance, move towards the target
-        if (distanceToTarget > stoppingDistance)
-        {
-            agent.SetDestination(target.position);
-        }
-        else
-        {
-            // If within stopping distance, stop moving
-            agent.ResetPath();
+            if (distanceToTarget >= stoppingDistance)
+            {
+                agent.isStopped = false;
+                agent.SetDestination(target.position);
+                animator.SetBool("IsWalking", true);
+            }
+            else
+            {
+                // Stop the agent from moving
+                if (!agent.isStopped) agent.isStopped = true;
+                animator.SetBool("IsWalking", false);
+            }
         }
     }
 
-    // Call this method to start following the main character
     public void StartFollowing()
     {
-        enabled = true;
+        isFollowing = true;
+        this.enabled = true;
     }
 
-    // Call this method to stop the NPC from following (e.g., when the cutscene ends)
     public void StopFollowing()
     {
-        enabled = false;
-        agent.ResetPath();
+        isFollowing = false;
+        this.enabled = false;
+        agent.isStopped = true; // Ensure the agent is stopped.
+        animator.SetBool("IsWalking", false);
     }
+
 }
