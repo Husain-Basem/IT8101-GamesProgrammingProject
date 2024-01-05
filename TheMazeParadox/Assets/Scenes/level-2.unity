@@ -1008,6 +1008,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413385139}
   - component: {fileID: 413385138}
+  - component: {fileID: 413385140}
   m_Layer: 0
   m_Name: TimelineOne
   m_TagString: Untagged
@@ -1059,6 +1060,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &413385140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413385137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14780a02e14879e4e9b1ec5eda5b2191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 413385138}
+  npcFollowScript: {fileID: 1902510005}
+  npcPatrolScript: {fileID: 1902510006}
 --- !u!1 &416434440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1382,7 @@ GameObject:
   - component: {fileID: 483127587}
   - component: {fileID: 483127586}
   - component: {fileID: 483127585}
+  - component: {fileID: 483127589}
   m_Layer: 0
   m_Name: cutscene trigger
   m_TagString: Untagged
@@ -1459,6 +1476,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &483127589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483127583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea1ac5dbf6a24a4b921e62822f348ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableDirector: {fileID: 413385138}
 --- !u!1 &485891179
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,7 +3422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246942725}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.014361242, y: 0.9507419, z: -0.04455803, w: -0.30642813}
+  m_LocalRotation: {x: -0.01436124, y: 0.9507419, z: -0.044558026, w: -0.30642813}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4265,7 +4295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522298476}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.015921788, y: 0.95050263, z: -0.04939987, w: -0.30635095}
+  m_LocalRotation: {x: -0.015921786, y: 0.95050263, z: -0.04939987, w: -0.30635095}
   m_LocalPosition: {x: 142.12027, y: 4.54, z: 37.127266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5341,6 +5371,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d39269034cfffbb40bdee8ec68429983, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1902510004}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d39269034cfffbb40bdee8ec68429983, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1902510006}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d39269034cfffbb40bdee8ec68429983, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1902510005}
   m_SourcePrefab: {fileID: 100100000, guid: d39269034cfffbb40bdee8ec68429983, type: 3}
 --- !u!95 &1902510002 stripped
 Animator:
@@ -5369,6 +5405,37 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1902510005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210075880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12860e032956b0419aae7bfd4273b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1157040859}
+  stoppingDistance: 2
+--- !u!114 &1902510006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210075880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ceddd17785e80e4299bc72437c37f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 416434441}
+  - {fileID: 1525301573}
+  - {fileID: 1201824741}
+  - {fileID: 485891180}
 --- !u!1001 &1931752443
 PrefabInstance:
   m_ObjectHideFlags: 0
