@@ -11,14 +11,56 @@ public class box : MonoBehaviour
     private GameObject keyItem;
     [SerializeField]
     private GameObject lanternTrigger;
+    [SerializeField]
+    DialogueManager dialogueManager;
+    [SerializeField]
+    DialogueTrigger dialogueTrigger;
+    [SerializeField]
+    GameObject dialogueBox;
+    // following variables are used to prevent skipping lines
+    float cooldown = 10f;
+    float lastClickTime = 0f;
 
+    private void Update()
+    {
+        // check if player clicks on mouse to continue dialogue message 
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            // get current time
+            float currentTime = Time.time;
+            // get the time between current click and last click
+            float diffSecs = currentTime - lastClickTime;
+            // if player clicks after the cooldown, proceeed
+            if (diffSecs >= cooldown)
+            {
+                // set last click time to current time
+                lastClickTime = currentTime;
+                // play dialogue
+                if (dialogueManager.DisplayNextSentence() == false)
+                {
+                    // if no more sentences are available, close the dialogue canvas
+                    dialogueBox.SetActive(false);
+                }
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
+        // if player has collected the key item, play cutscene and disable trigger
         if (keyItem.activeSelf == false)
         {
             timelineCinematic.Play();
             Debug.Log("Player can pass the tree");
             lanternTrigger.SetActive(false);
+        } else
+        {
+            dialogueBox.SetActive(true);
+            dialogueTrigger.TriggerDialogue();
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        dialogueBox.SetActive(false);
     }
 }

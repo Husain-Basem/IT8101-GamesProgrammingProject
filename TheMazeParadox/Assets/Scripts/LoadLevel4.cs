@@ -7,6 +7,6 @@ public class LoadLevel3 : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("level-2"); // load level 4
+        SceneManager.LoadScene("level-4"); // load level 4
     }
 }
