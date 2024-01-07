@@ -10,6 +10,7 @@ public class Diamond : MonoBehaviour
 
         if (playerInventory != null)
         {
+            FindObjectOfType<AudioManager>().Play("Pickup");
             playerInventory.DiamondCollected();
             gameObject.SetActive(false);
         }

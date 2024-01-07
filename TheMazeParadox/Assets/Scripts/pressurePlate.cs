@@ -27,6 +27,7 @@ public class pressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        FindObjectOfType<AudioManager>().Play("WallBreak");
         // destory the wall
         Destroy(wall);
         // display the debris

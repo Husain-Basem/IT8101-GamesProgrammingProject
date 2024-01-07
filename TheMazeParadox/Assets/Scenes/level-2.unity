@@ -3528,7 +3528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246942725}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.01436124, y: 0.9507419, z: -0.044558026, w: -0.30642813}
+  m_LocalRotation: {x: -0.014361242, y: 0.9507419, z: -0.04455803, w: -0.30642813}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4401,7 +4401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522298476}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.015921786, y: 0.95050263, z: -0.04939987, w: -0.30635095}
+  m_LocalRotation: {x: -0.015921788, y: 0.95050263, z: -0.04939987, w: -0.30635095}
   m_LocalPosition: {x: 142.12027, y: 4.54, z: 37.127266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5196,6 +5196,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715131964}
   m_CullTransparentMesh: 1
+--- !u!1 &1813281403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1813281405}
+  - component: {fileID: 1813281404}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1813281404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813281403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280e7ee1ee11e4e43af92eea4f1724bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Walking
+    clip: {fileID: 8300000, guid: 82957b19f96eda242b1a5cba829d39fc, type: 3}
+    output: {fileID: 24300002, guid: c82fabca580afcb4d952771002050621, type: 2}
+    volume: 0.061
+    pitch: 1.25
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Pickup
+    clip: {fileID: 8300000, guid: 6dd7b9162e167444f83ad56a8087a027, type: 3}
+    output: {fileID: 24300002, guid: c82fabca580afcb4d952771002050621, type: 2}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 71a48d49fb79184418df73ebed8067f2, type: 3}
+    output: {fileID: 24300002, guid: c82fabca580afcb4d952771002050621, type: 2}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+--- !u!4 &1813281405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813281403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -77.03555, y: 10.319581, z: -129.26334}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1821515963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6435,3 +6504,4 @@ SceneRoots:
   - {fileID: 483127588}
   - {fileID: 518602892}
   - {fileID: 1849083641}
+  - {fileID: 1813281405}

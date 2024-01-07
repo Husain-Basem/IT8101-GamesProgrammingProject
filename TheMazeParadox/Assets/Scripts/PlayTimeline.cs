@@ -28,6 +28,7 @@ public class box : MonoBehaviour
         // if player has collected the key item, play cutscene and disable trigger
         if (keyItem.activeSelf == false)
         {
+
             timelineCinematic.Play();
             Debug.Log("Player can pass the tree");
             lanternTrigger.SetActive(false);

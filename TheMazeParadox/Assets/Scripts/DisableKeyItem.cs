@@ -21,6 +21,7 @@ public class DisableKeyItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        FindObjectOfType<AudioManager>().Play("Pickup");
         key.SetActive(false);
     }
 }

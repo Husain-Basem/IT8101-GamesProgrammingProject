@@ -60,6 +60,7 @@ public class MoveLog : MonoBehaviour
         else if (!levelFinished)
         {
             dialogueIntro.TriggerDialogue();
+            
         }
 
     }
