@@ -27,9 +27,6 @@ public class MoveLog : MonoBehaviour
     [SerializeField]
     GameObject dialogueBox;
     bool levelFinished = false;
-    // following variables are used to prevent skipping lines
-    float cooldown = 0.2f;
-    float lastClickTime = 0f;
 
     // Update is called once per frame
     void Update()
@@ -44,31 +41,6 @@ public class MoveLog : MonoBehaviour
             if (Log.transform.position.x == LogDestination.transform.position.x)
             {
                 moveLog = false;
-            }
-        }
-        // check if player clicks on mouse to continue dialogue message 
-        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
-        {
-            Debug.Log("Key pressed");
-            // get current time
-            float currentTime = Time.time;
-            // get the time between current click and last click
-            float diffSecs = currentTime - lastClickTime;
-            // if player clicks after the cooldown, proceeed
-            if (diffSecs >= cooldown)
-            {
-
-                Debug.Log("Cooldown");
-                // set last click time to current time
-                lastClickTime = currentTime;
-
-                bool next = dialogueManager.DisplayNextSentence();
-                // play dialogue
-                if (next == false)
-                {
-                    // if no more sentences are available, close the dialogue canvas
-                    dialogueBox.SetActive(false);
-                }
             }
         }
     }

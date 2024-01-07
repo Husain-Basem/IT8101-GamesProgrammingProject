@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13110483, g: 0.09076635, b: 0.13997692, a: 1}
+  m_IndirectSpecularColor: {r: 0.13107938, g: 0.09078825, b: 0.140284, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12924441}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.028679755, y: -0.02080642, z: 0.000597098, w: 0.99937195}
+  m_LocalRotation: {x: 0.028679753, y: -0.020806424, z: 0.00059709814, w: 0.99937195}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9214,8 +9214,8 @@ MonoBehaviour:
   dialogue:
     name: Main
     sentences:
-    - I can't get past that tree without getting spotted.
-    - If only there is some way to turn off that lantern...
+    - I can't get past that tree without getting spotted. If only there is some way
+      to turn off that lantern...
 --- !u!1 &466120781
 GameObject:
   m_ObjectHideFlags: 0
@@ -10215,7 +10215,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -10580,7 +10580,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -155, y: -224.04}
-  m_SizeDelta: {x: 1500, y: 300}
+  m_SizeDelta: {x: 1250, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &602218915
 MonoBehaviour:
@@ -11953,7 +11953,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -12412,7 +12412,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -155, y: -158}
-  m_SizeDelta: {x: 1500, y: 300}
+  m_SizeDelta: {x: 1250, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787699555
 MonoBehaviour:
@@ -14452,8 +14452,8 @@ MonoBehaviour:
   dialogue:
     name: Main
     sentences:
-    - This potion seems to have increased my lung capacity.
-    - I should be able to turn off that lantern now.
+    - This potion seems to have increased my lung capacity. I should be able to turn
+      off that lantern now.
 --- !u!114 &1008310117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29923,7 +29923,7 @@ Transform:
   m_GameObject: {fileID: 1747822741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.2524916, z: 0, w: 0.96759915}
-  m_LocalPosition: {x: -74.37, y: 3.11, z: -73.52}
+  m_LocalPosition: {x: -74.25, y: 3.11, z: -73.45}
   m_LocalScale: {x: 10, y: 2.72, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29944,9 +29944,8 @@ MonoBehaviour:
   dialogue:
     name: Mysterious Wanderer
     sentences:
-    - Greetings!
-    - I seem to have lost my red potion.
-    - Find it for me and I'll help you get past this obstacle.
+    - 'Greetings! I seem to have lost my red potion. Find it for me and I''ll help
+      you get past this obstacle. '
 --- !u!114 &1747822748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29963,8 +29962,7 @@ MonoBehaviour:
     name: Mysterious Wanderer
     sentences:
     - Ah yes, this is indeed the red potion I was looking for. As we agreed upon
-      I've opened the path for you.
-    - Farewell my friend.
+      I've opened the path for you. Farewell my friend.
 --- !u!1 &1763590093
 GameObject:
   m_ObjectHideFlags: 0
