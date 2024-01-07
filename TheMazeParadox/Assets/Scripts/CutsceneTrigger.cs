@@ -7,16 +7,32 @@ using TMPro;
 public class CutsceneTrigger : MonoBehaviour
 {
 public PlayableDirector playableDirector;
-    public Camera mainCamera; // Assign your main camera in the inspector
-    public Camera cutsceneCamera; // Assign your cutscene camera in the inspector
+    public Camera mainCamera; 
+    public Camera cutsceneCamera; 
     private bool cutscenePlayed = false;
     public NPCFollow npcFollowScript;
-    public GameObject player;
+    private GameObject player; 
     public TextMeshProUGUI textMeshPro;
-
 
     private void Awake()
     {
+        // Find the active player in the scene and set it as the player GameObject
+        GameObject[] potentialPlayers = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var potentialPlayer in potentialPlayers)
+        {
+            if (potentialPlayer.activeInHierarchy)
+            {
+                player = potentialPlayer;
+                break;
+            }
+        }
+
+        // If no active player was found, log a warning
+        if (player == null)
+        {
+            Debug.LogWarning("CutsceneTrigger: No active player found.");
+        }
+
         // Subscribe to the stopped event to handle when the cutscene ends
         playableDirector.stopped += OnCutsceneStopped;
     }
@@ -26,7 +42,7 @@ public PlayableDirector playableDirector;
         // Check if the object entering the trigger is the player
         if (other.CompareTag("Player") && !cutscenePlayed)
         {
-            // Optionally, disable player control here
+            
 
             // Play the cutscene
             playableDirector.Play();

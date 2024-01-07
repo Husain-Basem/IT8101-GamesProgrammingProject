@@ -5,25 +5,42 @@ using UnityEngine.AI;
 
 public class NPCFollow : MonoBehaviour
 {
-    public Transform target; // Assign your main character's transform here
+    private Transform target; 
     public float stoppingDistance; // The distance at which the NPC will stop following
-    public Animator animator; // Assign your Animator component here
+    public Animator animator; 
 
     private NavMeshAgent agent;
-    private bool isFollowing = false; // Add a flag to control the following behavior
+    private bool isFollowing = false; // a flag to control the following behavior
 
     void Start()
+{
+    agent = GetComponent<NavMeshAgent>();
+    agent.stoppingDistance = stoppingDistance;
+
+    if (animator == null)
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = stoppingDistance;
-
-        if (animator == null)
-        {
-            animator = GetComponent<Animator>();
-        }
-
-        this.enabled = false; // Now the script starts with following disabled
+        animator = GetComponent<Animator>();
     }
+
+    // Find the active main character in the scene and set it as the target
+    GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag("Player");
+    foreach (var potentialTarget in potentialTargets)
+    {
+        if (potentialTarget.activeInHierarchy)
+        {
+            target = potentialTarget.transform;
+            break;
+        }
+    }
+
+    // If no active main character was found, log a warning
+    if (target == null)
+    {
+        Debug.LogWarning("NPCFollow: No active main character found.");
+    }
+
+    this.enabled = false; // the script starts with following disabled
+}
 
     void Update()
     {
