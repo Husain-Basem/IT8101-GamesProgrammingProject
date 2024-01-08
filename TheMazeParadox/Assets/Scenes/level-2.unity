@@ -1455,7 +1455,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 131.78355, y: 1.03, z: 49.17}
-  m_LocalScale: {x: 32.20216, y: 1.6236, z: 1}
+  m_LocalScale: {x: 64.16602, y: 1.6236, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1473,7 +1473,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 413385138}
-  mainCamera: {fileID: 1522298481}
   cutsceneCamera: {fileID: 51745674}
   npcFollowScript: {fileID: 1902510005}
   textMeshPro: {fileID: 1715131966}
@@ -3528,7 +3527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246942725}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.014361242, y: 0.9507419, z: -0.04455803, w: -0.30642813}
+  m_LocalRotation: {x: -0.01436124, y: 0.9507419, z: -0.044558026, w: -0.30642813}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4401,7 +4400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522298476}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.015921788, y: 0.95050263, z: -0.04939987, w: -0.30635095}
+  m_LocalRotation: {x: -0.015921786, y: 0.95050263, z: -0.04939987, w: -0.30635095}
   m_LocalPosition: {x: 142.12027, y: 4.54, z: 37.127266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
