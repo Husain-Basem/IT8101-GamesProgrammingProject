@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public AudioMixer audioMixer;
 
-    public void setVolume(float volume)
+    public void restartScene()
     {
-        audioMixer.SetFloat("volume", volume);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PlayerInventory.numberOfDiamonds = 0;
     }
 
-    public void setFullscreen(bool isFullscreen) {
-        Screen.fullScreen = isFullscreen;
+    public void SaveGame()
+    {
+        SaveGameManager.SaveGame();
     }
 
-    public void setQuality(int qualityIndex) {
-        QualitySettings.SetQualityLevel(qualityIndex);
+    public void LoadGame()
+    {
+        SaveGameManager.LoadGame();
     }
 
+    public void Quit()
+    {
+        
+        SceneManager.LoadScene("MainMenu");
+    }
 }
