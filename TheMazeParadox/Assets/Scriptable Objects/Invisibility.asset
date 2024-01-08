@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Invisibility
   description: Makes the player undetected by mobs for few seconds to get to safety
-  baseCost: 120
+  baseCost: 5
