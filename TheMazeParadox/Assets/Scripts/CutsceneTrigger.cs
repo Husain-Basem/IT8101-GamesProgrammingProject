@@ -13,6 +13,7 @@ public PlayableDirector playableDirector;
     public NPCFollow npcFollowScript;
     private GameObject player; 
     public TextMeshProUGUI textMeshPro;
+    public NPCPatrol npcPatrolScript;
 
     private void Awake()
     {
@@ -58,7 +59,8 @@ public PlayableDirector playableDirector;
         // Check if the object entering the trigger is the player
         if (other.CompareTag("Player") && !cutscenePlayed)
         {
-            
+            //stop patrolling
+            npcPatrolScript.StopPatrol();
 
             // Play the cutscene
             playableDirector.Play();

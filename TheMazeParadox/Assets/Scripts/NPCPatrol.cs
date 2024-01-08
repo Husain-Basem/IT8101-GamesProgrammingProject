@@ -9,10 +9,12 @@ public class NPCPatrol : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
     private bool isPatrolling;
+    public Animator animator;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>(); 
         agent.autoBraking = false;
 
         // Start patrolling immediately when the level loads
@@ -35,12 +37,17 @@ public class NPCPatrol : MonoBehaviour
         {
             GotoNextPoint();
         }
+
+        // Check the agent's velocity to determine if it's currently moving
+            //bool isMoving = agent.velocity.magnitude > 0.1f;
+            //animator.SetBool("IsWalking", isMoving); // Set the IsWalking parameter in the Animator
     }
 
     // Public method to start patrolling
     public void StartPatrol()
     {
         isPatrolling = true;
+        animator.SetBool("IsWalking", true);
         GotoNextPoint();
     }
 

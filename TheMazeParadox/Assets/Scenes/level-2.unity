@@ -1476,6 +1476,7 @@ MonoBehaviour:
   cutsceneCamera: {fileID: 51745674}
   npcFollowScript: {fileID: 1902510005}
   textMeshPro: {fileID: 1715131966}
+  npcPatrolScript: {fileID: 1902510006}
 --- !u!1 &485891179
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,7 +5723,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210075880}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ceddd17785e80e4299bc72437c37f54, type: 3}
   m_Name: 
@@ -5732,6 +5733,7 @@ MonoBehaviour:
   - {fileID: 1525301573}
   - {fileID: 1201824741}
   - {fileID: 485891180}
+  animator: {fileID: 1902510002}
 --- !u!136 &1902510008
 CapsuleCollider:
   m_ObjectHideFlags: 0
