@@ -27,6 +27,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d3369aef1b864b24faf3b69ff980a15f
   - enabled: 1
+    path: Assets/CharacterSelection_FirstLevel/CharacterSelection/Scenes/CharacterSelection.unity
+    guid: 3ab5da684d31a2144bfb62244052d2a0
+  - enabled: 1
+    path: Assets/CharacterSelection_FirstLevel/FirstLevel/Scenes/GameScene.unity
+    guid: 825c84da686ef0d429d7af468bc18fd8
+  - enabled: 1
+    path: Assets/CharacterSelection_FirstLevel/FirstLevel/Scenes/DeathScene.unity
+    guid: 4dc442f2600fbf449b89f3a2956c3258
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: fae74c4121940cf40ad1d88a32595d59
   m_configObjects: {}
