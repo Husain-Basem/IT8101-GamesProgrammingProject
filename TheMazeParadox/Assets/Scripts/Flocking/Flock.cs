@@ -2,112 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Define a class for managing a flock of agents in Unity.
 public class Flock : MonoBehaviour
 {
-    // Prefab for individual flock agents.
-    public FlockAgent agentPrefab;
-
-    // List to store references to the flock agents.
-    List<FlockAgent> agents = new List<FlockAgent>();
-
-    // Reference to the flock behavior.
-    public FlockBehaviour behaviour;
-
-    // Reference to the GameObject representing the spawn point for the flock.
-    public GameObject spawn;
-
-    // Parameters for configuring the flock.
-    [Range(1, 10)]
-    public int startingCount = 5;
-    const float AgentDensity = 0.08f;
-
-    [Range(1f, 100f)]
-    public float driveFactor = 10f;
-    [Range(1f, 100f)]
-    public float maxSpeed = 5f;
-    [Range(1f, 10f)]
-    public float neighborRadius = 1.5f;
-    [Range(0f, 1f)]
-    public float avoidanceRediusMultiplier = 0.5f;
-
-    // Variables for squared values of parameters.
-    float squareMaxSpeed;
-    float SquareNeighborRadius;
-    float squareAvoidanceRadius;
-
-    // Public property to access the squared avoidance radius from other scripts.
-    public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
-
+    float speed;
+    
     // Start is called before the first frame update
     void Start()
     {
-        // Check if the reference to the spawn point is set
-        if (spawn != null)
-        {
-            // Calculate squared values for parameters.
-            squareMaxSpeed = maxSpeed * maxSpeed;
-            SquareNeighborRadius = neighborRadius * neighborRadius;
-            squareAvoidanceRadius = SquareNeighborRadius * avoidanceRediusMultiplier * avoidanceRediusMultiplier;
-
-            // Set the position to the spawn point's position.
-            Vector3 spawnPosition = spawn.transform.position;
-
-            // Instantiate flock agents based on the starting count.
-            for (int i = 0; i < startingCount; i++)
-            {
-                // Generate a random rotation only around the Y-axis.
-                Quaternion randomYRotation = Quaternion.Euler(new Vector3(0f, Random.Range(0f, 360f), 0f));
-
-                // Instantiate a new flock agent.
-                FlockAgent newAgent = Instantiate(
-                    agentPrefab,
-                    spawnPosition,
-                    randomYRotation,
-                    transform
-                );
-
-                // Set a unique name for the agent.
-                newAgent.name = "Agent " + i;
-                newAgent.Initialize(this);
-
-                // Add the agent to the list of flock agents.
-                agents.Add(newAgent);
-            }
-        }
-        else
-        {
-            // Display an error if the spawn point reference is not set.
-            Debug.LogError("Spawn point reference not set. Please assign the spawn point in the Unity Editor.");
-        }
+        speed = Random.Range(FlockManager.FM.minSpeed, FlockManager.FM.maxSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (FlockAgent agent in agents) {
-            List<Transform> context = GetNearbybyObjects(agent);
+        ApplyRules();
+        this.transform.Translate(0, 0, speed * Time.deltaTime);
+    }
 
-            Vector3 move = behaviour.CalculateMove(agent, context, this);
-            move *= driveFactor;
-            if (move.sqrMagnitude > squareMaxSpeed)
-            {
-                move = move.normalized * maxSpeed;
-            }
-            agent.Move(move);
-        }
-    }
-    List<Transform> GetNearbybyObjects(FlockAgent agent)
+    void ApplyRules()
     {
-        List<Transform> context = new List<Transform>();
-        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighborRadius);
-        foreach(Collider c in contextColliders)
+        GameObject[] gos;
+        gos = FlockManager.FM.allNpc;
+
+        Vector3 vcenter = Vector3.zero;
+        Vector3 vavoid = Vector3.zero;
+        float gSpeed = 0.01f;
+        float nDistance;
+        int groupSize = 0;
+
+        foreach (GameObject go in gos)
         {
-            if (c != agent.AgentCollider)
+            if (go != this.gameObject)
             {
-                context.Add(c.transform);
+                nDistance = Vector3.Distance(go.transform.position, this.transform.position);
+                if (nDistance <= FlockManager.FM.neighbourDistance)
+                {
+                    vcenter += go.transform.position;
+                    groupSize++;
+
+                    if (nDistance < 1.0f)
+                    {
+                        vavoid += (this.transform.position - go.transform.position);
+                    }
+                    Flock anotherFlock = go.GetComponent<Flock>();
+                    gSpeed += anotherFlock.speed;
+                }
             }
         }
-        return context;
+
+        if (groupSize > 0)
+        {
+            vcenter = (vcenter / groupSize) + (FlockManager.FM.goalPos - this.transform.position);
+            speed = gSpeed / groupSize;
+            if (speed > FlockManager.FM.maxSpeed)
+                speed = FlockManager.FM.maxSpeed;
+
+            Vector3 direction = (vcenter + vavoid) - transform.position;
+            if (direction != Vector3.zero)
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), FlockManager.FM.rotationSpeed * Time.deltaTime);
+        }
     }
+
 }
