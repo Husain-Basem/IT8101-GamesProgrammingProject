@@ -7,15 +7,32 @@ using TMPro;
 public class CutsceneTrigger : MonoBehaviour
 {
 public PlayableDirector playableDirector;
-    public Camera mainCamera; 
+    private Camera mainCamera; 
     public Camera cutsceneCamera; 
     private bool cutscenePlayed = false;
     public NPCFollow npcFollowScript;
     private GameObject player; 
     public TextMeshProUGUI textMeshPro;
+    public NPCPatrol npcPatrolScript;
 
     private void Awake()
     {
+        // Find all cameras and set the first active one as the mainCamera
+        Camera[] allCameras = Camera.allCameras;
+        foreach (Camera cam in allCameras)
+        {
+            if (cam.gameObject.activeSelf)
+            {
+                mainCamera = cam;
+                break;
+            }
+        }
+
+        if (mainCamera == null)
+        {
+            Debug.LogWarning("CutsceneTrigger: No active main camera found.");
+        }
+
         // Find the active player in the scene and set it as the player GameObject
         GameObject[] potentialPlayers = GameObject.FindGameObjectsWithTag("Player");
         foreach (var potentialPlayer in potentialPlayers)
@@ -42,7 +59,8 @@ public PlayableDirector playableDirector;
         // Check if the object entering the trigger is the player
         if (other.CompareTag("Player") && !cutscenePlayed)
         {
-            
+            //stop patrolling
+            npcPatrolScript.StopPatrol();
 
             // Play the cutscene
             playableDirector.Play();
