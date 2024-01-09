@@ -60,7 +60,15 @@ public class NewBehaviourScript : MonoBehaviour
             coinUI.text = "Diamonds: " + coins.ToString();
             InventoryUI.UpdateDiamondText();
             CheckPurchaseable() ;
-
+            // change static variable from ability script to bought to allow for the activation of the ability.
+            if (shopItemsSO[btnNo].name == "Invisibility")
+            {
+                InvisibleAbility.bought = true;
+            }
+            if (shopItemsSO[btnNo].name == "Shoes")
+            {
+                SpeedAbility.bought = true;
+            }
         }
     }
 
