@@ -641,6 +641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6080153385530991813}
   - component: {fileID: 6423990690542001581}
+  - component: {fileID: 8410540610317488333}
   m_Layer: 0
   m_Name: Maze cell
   m_TagString: Untagged
@@ -685,6 +686,18 @@ MonoBehaviour:
   _frontWall: {fileID: 1318275382799673977}
   _backWall: {fileID: 8731568350945519117}
   _unvisitedBlock: {fileID: 5460057046303967678}
+--- !u!114 &8410540610317488333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318094635850445412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458f334eda980c847a7e74b8a5599bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8731568350945519117
 GameObject:
   m_ObjectHideFlags: 0
