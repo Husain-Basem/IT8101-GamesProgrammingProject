@@ -806,7 +806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8429865231615740692}
   - component: {fileID: 3568628872616989892}
-  - component: {fileID: -570073783978113270}
+  - component: {fileID: -6613052896452142552}
   m_Layer: 0
   m_Name: Zombie3
   m_TagString: Untagged
@@ -852,7 +852,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-570073783978113270
+--- !u!114 &-6613052896452142552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -861,19 +861,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4803014352389650695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e90f19786075b04a8b2ba243defe33b, type: 3}
+  m_Script: {fileID: 11500000, guid: 458f334eda980c847a7e74b8a5599bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FOVAngle: 270
-  smoothDamp: 1
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 512
-  directionsToCheckWhenAvoidingObstacles:
-  - {x: 1, y: 0, z: 0}
-  - {x: -1, y: 0, z: 0}
-  - {x: 0, y: 1, z: 0}
-  - {x: 0, y: 0, z: 1}
 --- !u!1 &4956532458698703312
 GameObject:
   m_ObjectHideFlags: 0
