@@ -8357,7 +8357,7 @@ MonoBehaviour:
   interactable: 0
   toggle: 0
   doorSoundOpen: {fileID: 0}
-  doorSoundLocked: {fileID: 0}
+  doorSoundLocked: {fileID: 320925016}
   doorAnim: {fileID: 258046198}
 --- !u!95 &258046198
 Animator:
@@ -23408,7 +23408,7 @@ MonoBehaviour:
   interactable: 0
   toggle: 0
   doorSoundOpen: {fileID: 0}
-  doorSoundLocked: {fileID: 0}
+  doorSoundLocked: {fileID: 320925016}
   doorAnim: {fileID: 732651469}
 --- !u!95 &732651469
 Animator:
@@ -27437,7 +27437,7 @@ MonoBehaviour:
   interactable: 0
   toggle: 0
   doorSoundOpen: {fileID: 0}
-  doorSoundLocked: {fileID: 0}
+  doorSoundLocked: {fileID: 320925016}
   doorAnim: {fileID: 823782755}
 --- !u!95 &823782755
 Animator:
@@ -40794,7 +40794,7 @@ MonoBehaviour:
   interactable: 0
   toggle: 0
   doorSoundOpen: {fileID: 0}
-  doorSoundLocked: {fileID: 0}
+  doorSoundLocked: {fileID: 320925016}
   doorAnim: {fileID: 1265839980}
 --- !u!95 &1265839980
 Animator:
@@ -51087,7 +51087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1efd88bebdb91444aacbd3e40dda6165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: leve-2
+  sceneName: level-2
   levelNumber: 2
 --- !u!65 &1555819307
 BoxCollider:
@@ -65377,7 +65377,7 @@ MonoBehaviour:
   interactable: 0
   toggle: 0
   doorSoundOpen: {fileID: 0}
-  doorSoundLocked: {fileID: 0}
+  doorSoundLocked: {fileID: 320925016}
   doorAnim: {fileID: 2052956123}
 --- !u!95 &2052956123
 Animator:
