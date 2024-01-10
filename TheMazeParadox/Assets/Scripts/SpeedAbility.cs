@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class SpeedAbility : Ability
 {
     public static bool bought = false;
-    private float tempSpeed; // used to restore speed to original value after the ability has ended
     public override void Activate(GameObject parent)
     {
         // check if the ability has been bought first
@@ -19,7 +18,6 @@ public class SpeedAbility : Ability
             _particleSystem.Play();
             // increase speed
             float _speed = parent.transform.GetComponentInChildren<ThirdPersonMovement>().speed;
-            tempSpeed = _speed;
             parent.transform.GetComponentInChildren<ThirdPersonMovement>().speed = _speed + 10;
             // play audio
             FindObjectOfType<AudioManager>().Play("Ability");
@@ -33,9 +31,12 @@ public class SpeedAbility : Ability
         ParticleSystem _particleSystem = parent.transform.GetComponentInChildren<ParticleSystem>();
         _particleSystem.Stop();
         // return speed to original state
-        parent.transform.GetComponentInChildren<ThirdPersonMovement>().speed = tempSpeed;
+        parent.transform.GetComponentInChildren<ThirdPersonMovement>().speed = 14;
         // play audio
-        FindObjectOfType<AudioManager>().Play("Ability");
+        if(bought)
+        {
+            FindObjectOfType<AudioManager>().Play("Ability");
+        }
         bought = false;
     }
 }

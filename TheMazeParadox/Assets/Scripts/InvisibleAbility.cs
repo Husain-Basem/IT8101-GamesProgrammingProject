@@ -31,7 +31,10 @@ public class InvisibleAbility : Ability
         ParticleSystem _particleSystem = parent.transform.GetComponentInChildren<ParticleSystem>();
         _particleSystem.Stop();
         // play audio
-        FindObjectOfType<AudioManager>().Play("Ability");
+        if(bought)
+        {
+            FindObjectOfType<AudioManager>().Play("Ability");
+        }
         bought = false;
     }
 }
