@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Unity.VisualScripting;
+using UnityEngine.UI;
 
 [CreateAssetMenu]
 public class SpeedAbility : Ability
@@ -19,6 +21,9 @@ public class SpeedAbility : Ability
             float _speed = parent.transform.GetComponentInChildren<ThirdPersonMovement>().speed;
             tempSpeed = _speed;
             parent.transform.GetComponentInChildren<ThirdPersonMovement>().speed = _speed + 10;
+            // play audio
+            FindObjectOfType<AudioManager>().Play("Ability");
+            
         }
     }
 
@@ -29,7 +34,8 @@ public class SpeedAbility : Ability
         _particleSystem.Stop();
         // return speed to original state
         parent.transform.GetComponentInChildren<ThirdPersonMovement>().speed = tempSpeed;
-        // reset ability shop
+        // play audio
+        FindObjectOfType<AudioManager>().Play("Ability");
         bought = false;
     }
 }

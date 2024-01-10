@@ -31,7 +31,6 @@ public class LichRaycast : MonoBehaviour
                 // fail the level
                 Debug.Log("Player Found! Game Over.");
                 SceneManager.LoadScene("DeathScene-Level-3");
-                // SceneManager.LoadScene("level-3");
             }
 
         }

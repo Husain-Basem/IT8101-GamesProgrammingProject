@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
+using Unity.VisualScripting;
 
 public class MoveLog : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class MoveLog : MonoBehaviour
     [SerializeField]
     GameObject dialogueBox;
     bool levelFinished = false;
+
 
     // Update is called once per frame
     void Update()

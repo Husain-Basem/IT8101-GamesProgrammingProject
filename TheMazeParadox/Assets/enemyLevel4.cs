@@ -35,11 +35,11 @@ public class enemyLevel4 : MonoBehaviour
         CheckAttackRange();
 
         // Act based on player proximity
-        if (playerInAttackRange)
+        if (playerInAttackRange && !player.CompareTag("Invisible"))
         {
             AttackPlayer();
         }
-        else if (playerInSightRange)
+        else if (playerInSightRange && !player.CompareTag("Invisible"))
         {
             ChasePlayer();
         }

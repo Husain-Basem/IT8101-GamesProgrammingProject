@@ -11,7 +11,7 @@ public class TreeViewPoint : MonoBehaviour
     {
         if (lanternLightTrigger.activeSelf != false)
         {
-            SceneManager.LoadScene("level-3");
+            SceneManager.LoadScene("DeathScene-Level-3");
         }
     }
 }
