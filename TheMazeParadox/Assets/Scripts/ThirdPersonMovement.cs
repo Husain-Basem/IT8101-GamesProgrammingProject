@@ -35,6 +35,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
 
