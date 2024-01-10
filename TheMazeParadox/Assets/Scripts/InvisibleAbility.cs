@@ -14,9 +14,13 @@ public class InvisibleAbility : Ability
         if (bought) {
             // change player tag to avoid being spotted
             parent.transform.gameObject.tag = "Invisible";
+            // play sound effect
+            FindObjectOfType<AudioManager>().Play("Ability");
             // play particles
             ParticleSystem _particleSystem = parent.transform.GetComponentInChildren<ParticleSystem>();
             _particleSystem.Play();
+            // reset bought bool to consume the ability
+            bought = false;
         }
     }
 
@@ -24,9 +28,10 @@ public class InvisibleAbility : Ability
     {
         // restore player tag
         parent.transform.gameObject.tag = "Player";
+        // play sound effect
+        FindObjectOfType<AudioManager>().Play("Ability");
         // stop particles
         ParticleSystem _particleSystem = parent.transform.GetComponentInChildren<ParticleSystem>();
         _particleSystem.Stop();
-        bought = false;
     }
 }

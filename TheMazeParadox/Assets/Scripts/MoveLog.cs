@@ -27,7 +27,7 @@ public class MoveLog : MonoBehaviour
     [SerializeField]
     GameObject dialogueBox;
     bool levelFinished = false;
-
+    bool playSound = true;
     // Update is called once per frame
     void Update()
     {
@@ -55,6 +55,12 @@ public class MoveLog : MonoBehaviour
             moveLog = true;
             levelFinished = true;
             dialogueFinished.TriggerDialogue();
+            if (playSound)
+            {
+                // play sound effect
+                FindObjectOfType<AudioManager>().Play("Log");
+                playSound = false;
+            }
         }
         // if key item has not yet been selected, start intro dialogue
         else if (!levelFinished)

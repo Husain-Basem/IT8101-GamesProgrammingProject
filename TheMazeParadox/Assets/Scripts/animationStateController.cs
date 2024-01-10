@@ -10,6 +10,7 @@ public class animationStateController : MonoBehaviour
     int isJumpingHash;
     int isFallingHash;
     int isGroundedHash;
+    public static bool isGameOver = false;
 
     string[] keys = new string[] { "a", "w", "s", "d" };
     // Start is called before the first frame update
@@ -25,37 +26,40 @@ public class animationStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isGrounded = ThirdPersonMovement.instance.isGrounded;
-        bool isJumping = ThirdPersonMovement.instance.isJumping;
-        bool isRunning = animator.GetBool(isRunningHash);
-        bool keyPressed = AnyKeyDown(keys);
-        
-        animator.SetBool(isGroundedHash, isGrounded);
-        animator.SetBool(isJumpingHash, isJumping);
-
-        if (!isGrounded && !isJumping)
+        if (!isGameOver)
         {
-            animator.SetBool(isFallingHash, true);
-        }
+            bool isGrounded = ThirdPersonMovement.instance.isGrounded;
+            bool isJumping = ThirdPersonMovement.instance.isJumping;
+            bool isRunning = animator.GetBool(isRunningHash);
+            bool keyPressed = AnyKeyDown(keys);
 
-        if (!isJumping)
-        {
-            animator.SetBool(isFallingHash, true);
-        }
+            animator.SetBool(isGroundedHash, isGrounded);
+            animator.SetBool(isJumpingHash, isJumping);
 
-        if (isGrounded)
-        {   
-            animator.SetBool(isFallingHash, false);
-        }
+            if (!isGrounded && !isJumping)
+            {
+                animator.SetBool(isFallingHash, true);
+            }
 
-        if (!isRunning && keyPressed)
-        {
-            animator.SetBool(isRunningHash, true);
-        }
+            if (!isJumping)
+            {
+                animator.SetBool(isFallingHash, true);
+            }
 
-        if (isRunning && !keyPressed)
-        {
-            animator.SetBool(isRunningHash, false);
+            if (isGrounded)
+            {
+                animator.SetBool(isFallingHash, false);
+            }
+
+            if (!isRunning && keyPressed)
+            {
+                animator.SetBool(isRunningHash, true);
+            }
+
+            if (isRunning && !keyPressed)
+            {
+                animator.SetBool(isRunningHash, false);
+            }
         }
     }
 

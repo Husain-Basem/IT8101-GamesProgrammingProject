@@ -33,6 +33,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     float timePassed = 0f;
 
+    public static bool isGameOver = false;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -51,7 +53,10 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!isGameOver)
+        {
+            Move();
+        }
     }
 
     private void Move()
