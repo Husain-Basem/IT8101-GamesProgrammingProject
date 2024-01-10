@@ -68,12 +68,21 @@ public class Flock : MonoBehaviour
             if (speed > FlockManager.FM.maxSpeed)
                 speed = FlockManager.FM.maxSpeed;
 
-            // Calculate the direction based on the center and avoidance vectors
-            Vector3 direction = (vcenter + vavoid) - transform.position;
+            // Add raycasting logic to detect walls
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, FlockManager.FM.wallDetectionDistance))
+            {
+                // If the ray hits a wall, change rotation based on wall distance
+                float wallDistance = hit.distance;
+                float maxRotationAngle = 90.0f; // You can adjust this value
 
-            // If there is a direction vector, rotate towards it
-            if (direction != Vector3.zero)
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), FlockManager.FM.rotationSpeed * Time.deltaTime);
+                // Calculate a rotation angle based on the wall distance
+                float rotationAngle = Mathf.Clamp(wallDistance / FlockManager.FM.maxWallDistance, 0f, 1f) * maxRotationAngle;
+
+                // Apply the rotation to avoid the wall
+                Quaternion avoidanceRotation = Quaternion.Euler(0, Random.Range(-rotationAngle, rotationAngle), 0);
+                transform.rotation *= avoidanceRotation;
+            }
         }
     }
 }

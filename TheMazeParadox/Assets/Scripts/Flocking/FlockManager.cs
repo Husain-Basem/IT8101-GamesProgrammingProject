@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class FlockManager : MonoBehaviour
 {
+
+    [Header("Wall Avoidance Settings")]
+    [Range(1.0f, 10.0f)]
+    public float wallDetectionDistance; // Distance at which NPCs detect walls
+    [Range(1.0f, 10.0f)]
+    public float maxWallDistance; // Maximum distance to a wall before making a turn
     // Static reference to the FlockManager instance (singleton)
     public static FlockManager FM;
 

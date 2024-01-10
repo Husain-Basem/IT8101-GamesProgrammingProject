@@ -13,6 +13,7 @@ public class ChangeScene : MonoBehaviour
     {
         // Load the specified scene additively (alongside the current scene)
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        Time.timeScale = 0f;
     }
 
     // Method to unload the specified scene
@@ -20,5 +21,6 @@ public class ChangeScene : MonoBehaviour
     {
         // Unload the scene with the specified name
         SceneManager.UnloadScene(sceneName);
+        Time.timeScale = 1f;
     }
 }

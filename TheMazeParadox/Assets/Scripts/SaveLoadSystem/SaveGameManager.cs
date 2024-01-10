@@ -77,6 +77,7 @@ public static class SaveGameManager
 
             // Set the loaded flag to true
             loaded = true;
+            Time.timeScale = 1f;
         }
         else
         {
