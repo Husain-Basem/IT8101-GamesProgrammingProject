@@ -14,6 +14,14 @@ public class enemyWithStates : MonoBehaviour
     private bool playerInSightRange;    // Flag indicating if the player is within sight range
     private bool playerInAttackRange;   // Flag indicating if the player is within attack range
     private Vector3 patrolDestination;   // The destination for patrolling
+    private enum PatrolDirection
+    {
+        Forward,
+        Backward,
+        Left,
+        Right
+    }
+    private PatrolDirection currentPatrolDirection;  // The current patrol direction
 
     public string sceneName;
     public float jumpscareTime;
@@ -24,17 +32,12 @@ public class enemyWithStates : MonoBehaviour
     public GameObject monsterWalking;
     public GameObject monsterSound;
 
-    [Header("Wall Avoidance Settings")]
-    [Range(1.0f, 10.0f)]
-    public float wallDetectionDistance; // Distance at which NPCs detect walls
-    [Range(1.0f, 10.0f)]
-    public float maxWallDistance; // Maximum distance to a wall before making a turn
-
     // Called when the script starts
     private void Start()
     {
-        // Initialize patrol destination when the script starts
+        // Initialize patrol destination and direction when the script starts
         SetRandomPatrolDestination();
+        SetRandomPatrolDirection();
 
         // Get reference to the Animator component
         animator = GetComponent<Animator>();
@@ -96,7 +99,6 @@ public class enemyWithStates : MonoBehaviour
     IEnumerator jumpscare()
     {
         yield return new WaitForSeconds(jumpscareTime);
-        
         SceneManager.LoadScene(sceneName);
     }
 
@@ -106,16 +108,46 @@ public class enemyWithStates : MonoBehaviour
         // Check if the enemy has reached the patrol destination
         if (!ai.pathPending && ai.remainingDistance < 0.5f)
         {
-            // Set a new random patrol destination
+            // Set a new random patrol direction
+            SetRandomPatrolDirection();
+
+            // Set a new random patrol destination based on the direction
             SetRandomPatrolDestination();
         }
+    }
+
+    // Set a new random patrol direction
+    private void SetRandomPatrolDirection()
+    {
+        // Choose a random direction from the PatrolDirection enum
+        currentPatrolDirection = (PatrolDirection)Random.Range(0, System.Enum.GetValues(typeof(PatrolDirection)).Length);
     }
 
     // Set a new random patrol destination within the patrol area
     private void SetRandomPatrolDestination()
     {
-        // Generate a random destination within a sphere of radius 10 units
-        patrolDestination = Random.insideUnitSphere * 10f;
+        // Adjust patrolDestination based on the chosen patrol direction
+        switch (currentPatrolDirection)
+        {
+            case PatrolDirection.Forward:
+                patrolDestination = transform.position + transform.forward * Random.Range(5f, 10f);
+                break;
+
+            case PatrolDirection.Backward:
+                patrolDestination = transform.position - transform.forward * Random.Range(5f, 10f);
+                break;
+
+            case PatrolDirection.Left:
+                patrolDestination = transform.position - transform.right * Random.Range(5f, 10f);
+                break;
+
+            case PatrolDirection.Right:
+                patrolDestination = transform.position + transform.right * Random.Range(5f, 10f);
+                break;
+
+            default:
+                break;
+        }
 
         // Declare a NavMeshHit variable to store information about the sampled position on the NavMesh
         NavMeshHit hit;

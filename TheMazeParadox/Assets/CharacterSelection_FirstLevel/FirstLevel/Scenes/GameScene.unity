@@ -2303,8 +2303,6 @@ MonoBehaviour:
   jumpscareAnim: {fileID: 0}
   monsterWalking: {fileID: 0}
   monsterSound: {fileID: 0}
-  wallDetectionDistance: 0
-  maxWallDistance: 0
 --- !u!54 &51817253
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26521,8 +26519,6 @@ MonoBehaviour:
   jumpscareAnim: {fileID: 788574747}
   monsterWalking: {fileID: 2075823064}
   monsterSound: {fileID: 600848549}
-  wallDetectionDistance: 0
-  maxWallDistance: 0
 --- !u!195 &788574750
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -29985,8 +29981,6 @@ MonoBehaviour:
   jumpscareAnim: {fileID: 851482616}
   monsterWalking: {fileID: 298984319}
   monsterSound: {fileID: 600848549}
-  wallDetectionDistance: 0
-  maxWallDistance: 0
 --- !u!195 &851482619
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -44607,8 +44601,6 @@ MonoBehaviour:
   jumpscareAnim: {fileID: 1367370637}
   monsterWalking: {fileID: 1058921883}
   monsterSound: {fileID: 600848549}
-  wallDetectionDistance: 0
-  maxWallDistance: 0
 --- !u!195 &1367370640
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -49414,8 +49406,6 @@ MonoBehaviour:
   jumpscareAnim: {fileID: 1503701942}
   monsterWalking: {fileID: 1821862149}
   monsterSound: {fileID: 600848549}
-  wallDetectionDistance: 0
-  maxWallDistance: 0
 --- !u!195 &1503701945
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -61349,7 +61339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1352753540370996, guid: 43b3bfc3c2f2ff146a8d85e63d0a4e26, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4006447889035012, guid: 43b3bfc3c2f2ff146a8d85e63d0a4e26, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -62957,8 +62947,6 @@ MonoBehaviour:
   jumpscareAnim: {fileID: 1969836971}
   monsterWalking: {fileID: 523467309}
   monsterSound: {fileID: 600848549}
-  wallDetectionDistance: 0
-  maxWallDistance: 0
 --- !u!195 &1969836968
 NavMeshAgent:
   m_ObjectHideFlags: 0
