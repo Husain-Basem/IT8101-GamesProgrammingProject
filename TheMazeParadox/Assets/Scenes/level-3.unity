@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12924441}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.015168097, y: 0.016206482, z: 0.00024588205, w: 0.9997536}
+  m_LocalRotation: {x: -0.015168095, y: 0.016206482, z: 0.00024588202, w: 0.9997536}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16683,6 +16683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52cc0b6d89c93842bbf934f19fb26b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0
+  sceneName: 
 --- !u!114 &698270496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19941,6 +19943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52cc0b6d89c93842bbf934f19fb26b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0
+  sceneName: DeathScene
 --- !u!114 &942185285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33966,6 +33970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52cc0b6d89c93842bbf934f19fb26b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 4
+  sceneName: TestDeathScene
 --- !u!1001 &1429914634
 PrefabInstance:
   m_ObjectHideFlags: 0

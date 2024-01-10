@@ -23,6 +23,12 @@ public class enemyWithStates : MonoBehaviour
     public GameObject monsterWalking;
     public GameObject monsterSound;
 
+    [Header("Wall Avoidance Settings")]
+    [Range(1.0f, 10.0f)]
+    public float wallDetectionDistance; // Distance at which NPCs detect walls
+    [Range(1.0f, 10.0f)]
+    public float maxWallDistance; // Maximum distance to a wall before making a turn
+
     // Called when the script starts
     private void Start()
     {
@@ -78,8 +84,7 @@ public class enemyWithStates : MonoBehaviour
     // Execute attack logic when the player is in attack range
     private void AttackPlayer()
     {
-        // Your attack logic goes here
-        // For demonstration purposes, we trigger an "Attack" animation and print a message to the console
+        // For demonstration purposes, trigger on "Attack" animation and print a message to the console
         //animator.SetTrigger("Attack"); 
         monsterWalking.SetActive(false);
         monsterSound.SetActive(true);
@@ -108,9 +113,26 @@ public class enemyWithStates : MonoBehaviour
     // Set a new random patrol destination within the patrol area
     private void SetRandomPatrolDestination()
     {
-        patrolDestination = Random.insideUnitSphere * 10f; // Adjust 10f based on your patrol area size
-        NavMeshHit hit;
-        NavMesh.SamplePosition(patrolDestination, out hit, 10f, NavMesh.AllAreas);
-        ai.destination = hit.position;
+        RaycastHit rayhit;
+        if (Physics.Raycast(transform.position, transform.forward, out rayhit, FlockManager.FM.wallDetectionDistance))
+        {
+            // If the ray hits a wall, change rotation based on wall distance
+            float wallDistance = rayhit.distance;
+            float maxRotationAngle = 90.0f; // You can adjust this value
+
+            // Calculate a rotation angle based on the wall distance
+            float rotationAngle = Mathf.Clamp(wallDistance / FlockManager.FM.maxWallDistance, 0f, 1f) * maxRotationAngle;
+
+            // Apply the rotation to avoid the wall
+            Quaternion avoidanceRotation = Quaternion.Euler(0, Random.Range(-rotationAngle, rotationAngle), 0);
+            transform.rotation *= avoidanceRotation;
+        }
+        else
+        {
+            patrolDestination = Random.insideUnitSphere * 10f;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(patrolDestination, out hit, 10f, NavMesh.AllAreas);
+            ai.destination = hit.position;
+        }
     }
 }

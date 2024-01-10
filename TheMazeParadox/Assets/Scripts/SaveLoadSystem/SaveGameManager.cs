@@ -45,6 +45,7 @@ public static class SaveGameManager
             p = tempData.playerData.PlayerPosition;
             q = tempData.playerData.PlayerRotation;
             loaded = true;
+            Time.timeScale = 1f;
         }
         else
         {

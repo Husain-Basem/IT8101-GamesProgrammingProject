@@ -36,6 +36,12 @@ EditorBuildSettings:
     path: Assets/CharacterSelection_FirstLevel/FirstLevel/Scenes/DeathScene.unity
     guid: 4dc442f2600fbf449b89f3a2956c3258
   - enabled: 1
+    path: Assets/DeathScene-Level-3.unity
+    guid: fc8b9ef7a588ae54395def10ed01a361
+  - enabled: 1
+    path: Assets/DeathScene-Level-4.unity
+    guid: 3bffaf65ff10b4b468977241f20497ff
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: fae74c4121940cf40ad1d88a32595d59
   m_configObjects: {}
