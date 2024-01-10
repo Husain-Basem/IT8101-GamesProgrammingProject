@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shoes
   m_EditorClassIdentifier: 
   title: Shoes
-  description: Increase player s speed
+  description: Increase player's speed. Press Left Shift to activate
   baseCost: 5

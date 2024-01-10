@@ -63,7 +63,7 @@ public class FlockManager : MonoBehaviour
     void Update()
     {
         // Ensure player GameObject is found before updating goalPos
-        if (player != null)
+        if (player != null && !player.CompareTag("Invisible"))
         {
             goalPos = player.transform.position;
         }
