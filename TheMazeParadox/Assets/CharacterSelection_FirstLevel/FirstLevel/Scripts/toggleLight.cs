@@ -4,36 +4,39 @@ using UnityEngine;
 
 public class toggleLight : MonoBehaviour
 {
-
+    // References to spotlight, flame, and toggle sound
     public GameObject Spotlight, Flame;
     public AudioSource toggleSound;
 
+    // Flag to track the state of the lights
     public bool onOff;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
+        // Check the state of onOff and activate/deactivate lights accordingly
         if (onOff)
         {
             Spotlight.SetActive(true);
             Flame.SetActive(true);
         }
-        else {
+        else
+        {
             Spotlight.SetActive(false);
             Flame.SetActive(false);
         }
-        toggle();
+
+        // Check for input to toggle the lights
+        ToggleLights();
     }
 
-    public void toggle ()
+    // Method to toggle the lights on key press
+    public void ToggleLights()
     {
+        // Check if the "L" key is pressed
         if (Input.GetKeyDown(KeyCode.L))
         {
+            // Toggle the onOff flag
             onOff = !onOff;
         }
     }

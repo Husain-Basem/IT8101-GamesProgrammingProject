@@ -1,3 +1,4 @@
+using Palmmedia.ReportGenerator.Core;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -113,26 +114,17 @@ public class enemyWithStates : MonoBehaviour
     // Set a new random patrol destination within the patrol area
     private void SetRandomPatrolDestination()
     {
-        RaycastHit rayhit;
-        if (Physics.Raycast(transform.position, transform.forward, out rayhit, FlockManager.FM.wallDetectionDistance))
-        {
-            // If the ray hits a wall, change rotation based on wall distance
-            float wallDistance = rayhit.distance;
-            float maxRotationAngle = 90.0f; // You can adjust this value
+        // Generate a random destination within a sphere of radius 10 units
+        patrolDestination = Random.insideUnitSphere * 10f;
 
-            // Calculate a rotation angle based on the wall distance
-            float rotationAngle = Mathf.Clamp(wallDistance / FlockManager.FM.maxWallDistance, 0f, 1f) * maxRotationAngle;
+        // Declare a NavMeshHit variable to store information about the sampled position on the NavMesh
+        NavMeshHit hit;
 
-            // Apply the rotation to avoid the wall
-            Quaternion avoidanceRotation = Quaternion.Euler(0, Random.Range(-rotationAngle, rotationAngle), 0);
-            transform.rotation *= avoidanceRotation;
-        }
-        else
-        {
-            patrolDestination = Random.insideUnitSphere * 10f;
-            NavMeshHit hit;
-            NavMesh.SamplePosition(patrolDestination, out hit, 10f, NavMesh.AllAreas);
-            ai.destination = hit.position;
-        }
+        // Sampling a valid position on the NavMesh near the generated destination within a radius of 10 units
+        // The sampled position will be stored in the 'hit' variable
+        NavMesh.SamplePosition(patrolDestination, out hit, 10f, NavMesh.AllAreas);
+
+        // Set the AI's destination to the sampled position on the NavMesh
+        ai.destination = hit.position;
     }
 }
